@@ -39,11 +39,13 @@ else {
   <button type="submit" class="btn btn-primary">Post Article</button>
 </div>
 </form>
+<div id="result" class="alert alert-danger" role="alert">
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
-    tinymce.init({
+    $( document ).ready(function() {
+        tinymce.init({
       selector: 'textarea',
       plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
       toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
@@ -63,9 +65,14 @@ else {
           console.log(formValues);
 
           $.post("/proccespost.php",formValues, function(result){
-              console.log(result);
+              $('#result').text(result);
+              $('#result').show();
           });
       });
+});
+    
+
+  
   </script>
 
 </html>

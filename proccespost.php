@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST);
     $response = curl_exec($ch);
-    var_dump($response);
+    
     curl_close($ch);
     return $response;
 }
